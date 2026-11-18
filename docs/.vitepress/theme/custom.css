@@ -1,3 +1,16 @@
+/* 等宽字体：优先使用本机安装的 JetBrains Maple Mono Regular；
+   未安装时回退到网页字体 JetBrains Mono + Maple Mono，保证线上一致可读。 */
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.3.0/400.css');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/maple-mono@5.3.0/400.css');
+
+@font-face {
+  font-family: 'JetBrains Maple Mono';
+  src: local('JetBrains Maple Mono Regular'), local('JetBrains Maple Mono');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /**
  * Vue 官网风格主题
  * 把 VitePress 默认蓝色主色换成 Vue 绿 #42b883
@@ -8,6 +21,9 @@
   --vp-c-brand-2: #3aa776;
   --vp-c-brand-3: #35916a;
   --vp-c-brand-soft: rgba(66, 184, 131, 0.14);
+
+  /* 全站等宽字体：代码块、行内代码、键盘键位、终端示意统一使用 */
+  --vp-font-family-mono: 'JetBrains Maple Mono', 'JetBrains Mono', 'Maple Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
   /* 首页 hero 的品牌形象色 */
   --vp-home-hero-name-color: transparent;
@@ -37,6 +53,18 @@
 /* 代码复制按钮也用品牌色反馈 */
 .copy-button {
   --vp-c-brand-1: #42b883;
+}
+
+/* 兜底：确保所有代码相关元素都走同一套等宽字体 */
+code,
+pre,
+kbd,
+samp,
+.shiki,
+.vp-doc code,
+.vp-doc pre {
+  font-family: var(--vp-font-family-mono);
+  font-weight: 400;
 }
 
 /* ---------- 切换章节时的过渡动画 ---------- */
