@@ -1,0 +1,15 @@
+{
+  "name": "threejs-kb",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs --host 0.0.0.0 --port 5173",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --host 0.0.0.0 --port 4173"
+  },
+  "dependencies": {
+    "three": "^0.187.0",
+    "vitepress": "^1.6.4"
+  }
+}

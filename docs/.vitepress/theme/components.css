@@ -1,0 +1,205 @@
+/**
+ * 交互演示组件样式：Vue 官网绿色风格，与主题一致
+ * 用 CSS 变量跟随明暗主题切换
+ */
+
+.demo-box {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+  gap: 0;
+  margin: 24px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--vp-c-bg-soft);
+}
+
+.demo-canvas {
+  width: 100%;
+  height: 440px;
+  min-width: 0;
+  position: relative;
+  background: #1a1a2e;
+}
+.demo-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+.demo-canvas-tall { height: 520px; }
+
+.demo-panel {
+  padding: 20px 22px;
+  border-left: 1px solid var(--vp-c-divider);
+  overflow-y: auto;
+  max-height: 520px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.demo-panel-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  margin-bottom: 6px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--vp-c-brand-soft);
+}
+.demo-panel-hint {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  margin: 8px 0 16px;
+}
+.demo-panel label {
+  display: block;
+  margin: 12px 0;
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+}
+.demo-panel label b {
+  float: right;
+  color: var(--vp-c-brand-1);
+  font-variant-numeric: tabular-nums;
+}
+.demo-panel input[type='range'] {
+  width: 100%;
+  margin-top: 6px;
+  accent-color: var(--vp-c-brand-1);
+  cursor: pointer;
+}
+.demo-panel .demo-color {
+  width: 100%;
+  height: 34px;
+  margin-top: 6px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+.demo-check {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.demo-check input { accent-color: var(--vp-c-brand-1); }
+
+.demo-presets, .demo-tpls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.demo-presets button, .demo-tpls button, .demo-reset {
+  padding: 6px 14px;
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--vp-c-brand-1);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.demo-presets button:hover, .demo-tpls button:hover, .demo-reset:hover {
+  background: var(--vp-c-brand-soft);
+}
+.demo-tpls button.active {
+  background: var(--vp-c-brand-1);
+  color: #fff;
+}
+
+.demo-perf {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+}
+
+.demo-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+
+/* 数据读数条（拾取/相机等组件的实时数值显示） */
+.demo-readout {
+  background: var(--vp-c-brand-soft);
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin: 10px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+}
+.demo-readout.demo-code {
+  font-family: var(--vp-font-family-mono);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.demo-code {
+  background: var(--vp-code-block-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-x: auto;
+  color: var(--vp-c-text-1);
+  margin: 12px 0;
+}
+.demo-reset { margin-top: 4px; }
+
+/* Playground 专属 */
+.demo-editor {
+  width: 100%;
+  height: 300px;
+  resize: vertical;
+  background: var(--vp-code-block-bg);
+  color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 12px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px;
+  line-height: 1.55;
+  tab-size: 2;
+}
+.demo-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+.demo-run {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.demo-run:hover { opacity: 0.85; }
+.demo-run-count { font-size: 12px; color: var(--vp-c-text-3); }
+.demo-error {
+  color: #e53935;
+  font-size: 12px;
+  background: rgba(229, 57, 53, 0.08);
+  border: 1px solid rgba(229, 57, 53, 0.3);
+  border-radius: 6px;
+  padding: 8px 12px;
+  word-break: break-all;
+}
+
+/* 窄屏：面板移到下方 */
+@media (max-width: 768px) {
+  .demo-box { grid-template-columns: 1fr; }
+  .demo-canvas, .demo-canvas-tall { height: 340px; }
+  .demo-panel {
+    border-left: none;
+    border-top: 1px solid var(--vp-c-divider);
+    max-height: none;
+  }
+}

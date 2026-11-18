@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 228" width="100%" height="100%">
+  <!-- Three.js 风格的等距立方体，Vue 官网绿配色 -->
+  <polygon points="128,8 240,72 128,136 16,72" fill="#42b883"/>
+  <polygon points="16,72 128,136 128,220 16,156" fill="#35495e"/>
+  <polygon points="240,72 128,136 128,220 240,156" fill="#2c8c68"/>
+  <polyline points="128,8 128,136 240,72 128,8 16,72 128,136" fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+</svg>
