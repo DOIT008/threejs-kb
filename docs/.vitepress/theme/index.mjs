@@ -1,6 +1,5 @@
 import { nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
-import Layout from './Layout.vue'
 
 // 首屏动画：DOM 未就绪时等 DOMContentLoaded，已就绪就直接下一帧执行
 function renderOnInit(cb) {
@@ -25,7 +24,6 @@ import BloomLab from './components/BloomLab.vue'
 
 export default {
   extends: DefaultTheme,
-  Layout,
   enhanceApp({ app, router }) {
     // 在 Markdown 里直接写组件标签即可嵌入交互演示
     app.component('MaterialLab', MaterialLab)

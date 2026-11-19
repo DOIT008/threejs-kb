@@ -36,11 +36,6 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
 
-  // 在首屏渲染前应用用户保存的正文字体，避免字体跳变闪烁
-  head: [
-    ['script', {}, 'try{var f=localStorage.getItem("kb-font");if(f&&f!=="system")document.documentElement.setAttribute("data-font",f)}catch(e){}']
-  ],
-
   // 提示块中文化；「大白话时间」由 CSS 按标题染成 Vue 绿
   markdown: {
     container: {
