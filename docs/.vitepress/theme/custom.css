@@ -70,6 +70,37 @@ samp,
   font-weight: 400;
 }
 
+/* ---------- 表格：不挤成竖排，超宽时横向滚动 ---------- */
+.vp-doc table {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vp-doc table::-webkit-scrollbar {
+  height: 8px;
+}
+
+.vp-doc table::-webkit-scrollbar-thumb {
+  background-color: var(--vp-c-divider);
+  border-radius: 8px;
+}
+
+.vp-doc table::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 让每行按内容自然宽度排列，窄屏出现横向滚动条，而不是把中文挤成竖排 */
+.vp-doc table tr {
+  min-width: max-content;
+}
+
+.vp-doc table th,
+.vp-doc table td {
+  white-space: nowrap;
+  vertical-align: top;
+}
+
 /* ---------- 切换章节时的过渡动画 ---------- */
 /* 由 theme/index.mjs 的 router.onAfterRouteChanged 挂钩添加 .page-enter class */
 @keyframes page-enter {
