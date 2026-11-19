@@ -13,7 +13,7 @@
 | 改了顶点数据要让 GPU 更新 | `attribute.needsUpdate = true` | 别只改 `attribute.array`——不设 needsUpdate，GPU 不会重传，画面不变 |
 | 一个几何体分区域用不同材质 | `geometry.addGroup(start, count, materialIndex)` + `new Mesh(geo, [matA, matB])` | 别叠多个 Mesh——分组一次提交且共享同一几何体 |
 | 只画外轮廓做描边 | `new THREE.EdgesGeometry(geometry, 1)` + `LineSegments` | 别用 `WireframeGeometry`——它连三角面的对角线都画，不是想要的外轮廓 |
-| 摆几千个相同物体（草 / 星星） | `new THREE.InstancedMesh(geo, mat, count)`（详见 API 15） | 别 `new Mesh` 几千次——每次一个 draw call，帧率被拖垮；几何体各不相同时用 `BatchedMesh` |
+| 摆几千个相同物体（草 / 星星） | `new THREE.InstancedMesh(geo, mat, count)`（详见 [API 15](</06-API速查手册/API 15 · 物体类型全参考>)） | 别 `new Mesh` 几千次——每次一个 draw call，帧率被拖垮；几何体各不相同时用 `BatchedMesh` |
 
 ::: warning 一个高频误区
 两个常见坑：一是改了 `BufferAttribute.array` 里的数据却忘了设 `attribute.needsUpdate = true`，GPU 不会重新上传，画面毫无变化，让人以为 API 失效；二是切换场景时只 `scene.remove(mesh)` 而不调 `geometry.dispose()`，GPU 显存不会自动回收，反复切换会持续泄漏直到页面崩溃。另外内置几何体的分段数别无脑拉满——`SphereGeometry` 默认 32×16 通常够用，设成 128×64 会让三角形数暴涨。

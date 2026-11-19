@@ -209,4 +209,4 @@ geometry.attributes.position.setUsage(THREE.DynamicDrawUsage);
 | 动画循环 | `THREE.LoopOnce`、`THREE.LoopRepeat`、`THREE.LoopPingPong` |
 | 插值 | `THREE.InterpolateSmooth`、`InterpolateLinear`、`InterpolateDiscrete` |
 | 曲线 | `THREE.CurvePath`、`CatmullRomCurve3`、`CubicBezierCurve3` |
-| 键盘/鼠标 | 标准 DOM 事件值（详见控制器章节） |
+| 键盘/鼠标 | 标准 DOM 事件值（详见[控制器章节](</06-API速查手册/API 14 · 控制器全参考>)） |

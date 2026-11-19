@@ -58,7 +58,7 @@ scene.fog = new THREE.Fog(0x1a1a2e, 10, 50);
 
 ### 继承的方法
 
-`Scene` 没有特有方法，全部继承自 `Object3D`（见上一章）。
+`Scene` 没有特有方法，全部继承自 `Object3D`（见[上一章](</06-API速查手册/API 02 · Object3D 全参考>)）。
 
 ## 二、Fog / FogExp2（雾）
 

@@ -158,7 +158,7 @@ controls.addEventListener('change', () => renderer.render(scene, camera));
 
 ## 四、PointerLockControls（第一人称）
 
-见上一章 Raycaster 部分。
+见[上一章 Raycaster](</06-API速查手册/API 12 · Raycaster 与交互>)部分。
 
 ## 五、TransformControls（变换工具）
 
