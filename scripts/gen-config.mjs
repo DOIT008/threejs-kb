@@ -36,6 +36,11 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
 
+  // 浏览器标签页 favicon（base 拼在前面，GitHub Pages 项目站点才找得到）
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: \`\${base}logo.svg\` }]
+  ],
+
   // 提示块中文化；「大白话时间」由 CSS 按标题染成 Vue 绿
   markdown: {
     container: {
