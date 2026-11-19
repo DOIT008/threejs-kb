@@ -38,14 +38,80 @@
   --vp-c-brand-soft: rgba(66, 211, 146, 0.16);
 }
 
-/* 提示块：VitePress 内置 tip 默认就是绿色系，和 Vue 主题天然契合。
-   这里微调让大白话/讲解块（全部用 tip 容器）更贴近 Vue 官网的绿 */
-.tip.custom-block {
+/* ---------- 提示块：统一质感 + 标题左侧图标 ----------
+   VitePress 默认 warning/danger 边框是 transparent，看着像扁平面色块；
+   这里统一成「边框 + 柔底色 + 标题色 + 图标」的卡片质感。 */
+html:root {
+  --vp-custom-block-warning-border: var(--vp-c-warning-1);
+  --vp-custom-block-danger-border: var(--vp-c-danger-1);
+}
+
+.vp-doc .tip.custom-block {
   border-color: var(--vp-c-brand-2);
   background-color: var(--vp-c-brand-soft);
 }
-.tip.custom-block .custom-block-title {
+.vp-doc .warning.custom-block {
+  border-color: var(--vp-c-warning-1);
+}
+.vp-doc .danger.custom-block {
+  border-color: var(--vp-c-danger-1);
+}
+.vp-doc .info.custom-block {
+  border-color: var(--vp-c-brand-1);
+}
+
+.vp-doc .tip.custom-block .custom-block-title {
   color: var(--vp-c-brand-2);
+}
+.vp-doc .warning.custom-block .custom-block-title {
+  color: var(--vp-c-warning-1);
+}
+.vp-doc .danger.custom-block .custom-block-title {
+  color: var(--vp-c-danger-1);
+}
+.vp-doc .info.custom-block .custom-block-title {
+  color: var(--vp-c-brand-1);
+}
+
+/* 标题左侧图标：用 mask + currentColor，颜色自动跟随标题色 */
+.vp-doc .custom-block .custom-block-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vp-doc .custom-block .custom-block-title::before {
+  content: '';
+  display: inline-block;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+/* tip：灯泡 */
+.vp-doc .tip.custom-block .custom-block-title::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6M10 22h4'/%3E%3Cpath d='M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8a6 6 0 0 0-12 0c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6M10 22h4'/%3E%3Cpath d='M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8a6 6 0 0 0-12 0c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14'/%3E%3C/svg%3E");
+}
+/* warning：三角感叹号 */
+.vp-doc .warning.custom-block .custom-block-title::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");
+}
+/* danger：八角警告 */
+.vp-doc .danger.custom-block .custom-block-title::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86L7.86 2z'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86L7.86 2z'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+}
+/* info：圆圈 i */
+.vp-doc .info.custom-block .custom-block-title::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E");
 }
 
 /* 代码复制按钮也用品牌色反馈 */
