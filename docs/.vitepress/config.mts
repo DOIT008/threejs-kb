@@ -14,9 +14,10 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
 
-  // 浏览器标签页 favicon（base 拼在前面，GitHub Pages 项目站点才找得到）
+  // 浏览器标签页 favicon + 主题色防闪烁（渲染前应用保存的主题）
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}logo.svg` }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}logo.svg` }],
+    ['script', {}, 'try{var t=localStorage.getItem("kb-theme");if(t&&t!=="green")document.documentElement.setAttribute("data-theme",t)}catch(e){}']
   ],
 
   // 提示块中文化；「大白话时间」由 CSS 按标题染成 Vue 绿
