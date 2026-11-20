@@ -2,6 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const docs = 'docs';
+// 访问密码门：内联脚本（哈希校验，源码不含明文密码）
+const scriptDir = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1'));
+const gateCode = fs.readFileSync(path.join(scriptDir, 'gate-script.js'), 'utf8');
+
 const groups = fs.readdirSync(docs)
   // public 是 VitePress 的静态资源目录，不是文档分组，必须排除
   .filter(d => fs.statSync(path.join(docs, d)).isDirectory() && d !== '.vitepress' && d !== 'public')
@@ -39,7 +43,8 @@ export default defineConfig({
   // 浏览器标签页 favicon + 主题色防闪烁（渲染前应用保存的主题）
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: \`\${base}logo.svg\` }],
-    ['script', {}, 'try{var t=localStorage.getItem("kb-theme");if(t&&t!=="green")document.documentElement.setAttribute("data-theme",t)}catch(e){}']
+    ['script', {}, 'try{var t=localStorage.getItem("kb-theme");if(t&&t!=="green")document.documentElement.setAttribute("data-theme",t)}catch(e){}'],
+    ['script', {}, ${JSON.stringify(gateCode)}]
   ],
 
   // 提示块中文化；「大白话时间」由 CSS 按标题染成 Vue 绿
